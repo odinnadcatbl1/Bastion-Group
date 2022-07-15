@@ -55,7 +55,41 @@ const Header: React.FC = () => {
             </div>
             <div className="header__bottom">
                 <div className="container">
-                    <img src={logo} alt="logo" />
+                    <div className="header__bottom-inner">
+                        <img className="header__logo" src={logo} alt="logo" />
+                        <div className="header__text">
+                            Производитель металлических изделий №1
+                        </div>
+                        <div className="header__button-container">
+                            <button className="header__button">
+                                <img src={catalogIcon} alt="icon" />
+                                Каталог
+                            </button>
+                        </div>
+                        <form action="/" className="search__form">
+                            <img src={searchIcon} alt="search icon" />
+                            <input
+                                className="search__input"
+                                type="text"
+                                placeholder="Поиск по названию"
+                            />
+                            <button className="search__button">
+                                <img src={arrowIcon} alt="search__btn" />
+                            </button>
+                        </form>
+                        <div className="header__icons">
+                            <div className="header__icon">
+                                <img src={starIcon} alt="star" />
+                                Избранное
+                            </div>
+
+                            <div className="header__icon">
+                                <img src={cartIcon} alt="cart" />
+                                Корзина
+                                <div className="cart__count">2</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
