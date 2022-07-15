@@ -4,6 +4,7 @@ import "./Header.scss";
 import phoneIcon from "../../assets/svg/phone.svg";
 import locIcon from "../../assets/svg/location.svg";
 import mailIcon from "../../assets/svg/mail.svg";
+import logo from "../../assets/img/logo.png";
 import catalogIcon from "../../assets/svg/tab-filter.svg";
 import searchIcon from "../../assets/svg/search.svg";
 import arrowIcon from "../../assets/svg/arrow.svg";
@@ -17,8 +18,12 @@ const Header: React.FC = () => {
                 <div className="container">
                     <nav className="header__nav">
                         <ul className="nav__list">
-                            <li className="nav__link">Типы продуктов</li>
-                            <li className="nav__link">Продукты</li>
+                            <li className="nav__link">
+                                <Link to="/">Типы товаров</Link>
+                            </li>
+                            <li className="nav__link">
+                                <Link to="/s">Продукты</Link>
+                            </li>
                         </ul>
 
                         <div className="header__info">
@@ -49,7 +54,9 @@ const Header: React.FC = () => {
                 </div>
             </div>
             <div className="header__bottom">
-                <div className="container"></div>
+                <div className="container">
+                    <img src={logo} alt="logo" />
+                </div>
             </div>
         </header>
     );
