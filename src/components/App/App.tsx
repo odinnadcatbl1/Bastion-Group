@@ -5,7 +5,6 @@ import "./App.scss";
 const App: React.FC = () => {
     const state = useSelector((state) => state);
 
-    console.log(state);
     return <div></div>;
 };
 
