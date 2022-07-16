@@ -87,6 +87,10 @@
     border-radius: 4px;
     background-color: #c93e33;
 
+    &:hover {
+        opacity: 0.8;
+    }
+
     img {
         width: 1.6rem;
         height: 1.6rem;
@@ -121,6 +125,11 @@
 .search__button {
     border: none;
     background: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 }
 
 .header__icons {
@@ -137,12 +146,19 @@
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.2;
+    cursor: pointer;
 
     &:first-child {
         margin-right: 3.6rem;
     }
 
+    &:hover {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+
     img {
+        transition: all 0.2s ease;
         width: 1.75rem;
         height: 1.75rem;
         margin-bottom: 0.8rem;
