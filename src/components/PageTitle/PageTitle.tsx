@@ -10,23 +10,26 @@ const PageTitle: React.FC = () => {
     return (
         <div>
             <BreadCrumbs />
+
             <div className="page__title-container">
                 <div className="page__title">
-                    <img src={arrowLeftIcon} alt="back" />
+                    <button className="page__title-button">
+                        <img src={arrowLeftIcon} alt="back" />
+                    </button>
                     <h1>Опоры трубопроводов</h1>
                 </div>
-            </div>
 
-            <div className="sort__block">
-                <div className="sort__type">
-                    Сначала популярные <img src={sortIcon} alt="sort" />
-                </div>
-                <div className="view__type">
-                    <div className="tab__filter">
-                        <img src={tabFilterIcon} alt="tab filter" />
+                <div className="sort__block">
+                    <div className="sort__type">
+                        Сначала популярные <img src={sortIcon} alt="sort" />
                     </div>
-                    <div className="list__filter">
-                        <img src={listFilterIcon} alt="list filter" />
+                    <div className="view__types">
+                        <div className="tab__filter">
+                            <img src={tabFilterIcon} alt="tab filter" />
+                        </div>
+                        <div className="list__filter">
+                            <img src={listFilterIcon} alt="list filter" />
+                        </div>
                     </div>
                 </div>
             </div>
