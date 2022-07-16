@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainPage from "../pages/Main/Main";
 
 import Header from "../Header/Header";
 
@@ -12,7 +13,7 @@ const App: React.FC = () => {
         <Router>
             <Header />
             <Routes>
-                <Route path="/" element={<h1>ТИПЫ ТОВАРОВ</h1>} />
+                <Route path="/" element={<MainPage />} />
                 <Route path="/s" element={<h1>ПРОДУКТЫ</h1>} />
             </Routes>
         </Router>
