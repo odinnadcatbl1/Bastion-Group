@@ -1,0 +1,155 @@
+.sidebar {
+    width: 25%;
+    border-right: 1px solid #e6e6e6;
+}
+
+.sidebar__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 2rem;
+    cursor: pointer;
+    border-bottom: 1px solid #e6e6e6;
+
+    img {
+        margin-right: 1.1rem;
+    }
+}
+
+.arrow-down {
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-135deg);
+
+    &--red {
+        border: solid #c93e33;
+        border-width: 0 1px 1px 0;
+        display: inline-block;
+        padding: 2px;
+        transform: rotate(45deg);
+        margin-bottom: 1px;
+    }
+}
+
+.sidebar__title-name {
+    display: flex;
+    align-items: center;
+}
+
+.category__list {
+    padding: 2rem;
+    padding-right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category__item {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.category__item-type {
+    color: #b3b3b3;
+}
+
+.category__item-name {
+    color: black;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.category__item-num {
+    display: inline;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    background-color: #c93e33;
+    border-radius: 500em 500em 500em 500em;
+    padding: 0.2rem 0.4rem;
+    color: #efefef;
+}
+
+.show__more {
+    display: flex;
+    align-items: center;
+    padding: 0rem 2rem 3rem 2rem;
+    color: #c93e33;
+    font-size: 1.2rem;
+    font-weight: 400;
+    cursor: pointer;
+    border-bottom: 1px solid #e6e6e6;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    i {
+        margin-left: 1rem;
+    }
+}
+
+.filter__item {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 2rem;
+}
+
+.filter__item-name {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.filter__price-inputs {
+    margin-top: 2rem;
+    display: flex;
+}
+
+.filter__price-label {
+    font-weight: 400;
+    max-width: 10.8rem;
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+
+    &:last-child {
+        margin-left: 1.3rem;
+    }
+}
+
+.filter__price-text {
+    font-size: 1.2rem;
+}
+
+.filter__price-input {
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: black;
+    width: 100%;
+    border: none;
+
+    &::placeholder {
+        font-family: inherit;
+        color: #b3b3b3;
+    }
+
+    &:focus {
+        border-bottom: 1px solid #c93e33;
+    }
+}
