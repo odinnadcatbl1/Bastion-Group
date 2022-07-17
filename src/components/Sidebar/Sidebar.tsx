@@ -1,3 +1,5 @@
+import PriceSlider from "../Slider/PriceSlider";
+
 import "./Sidebar.scss";
 import categoryIcon from "../../assets/svg/tab-filter--red.svg";
 import filterIcon from "../../assets/svg/filter.svg";
@@ -86,24 +88,8 @@ const Sidebar: React.FC = () => {
                             Цена, руб
                             <i className="arrow-down"></i>
                         </div>
-                        <div className="filter__price-inputs">
-                            <label className="filter__price-label">
-                                <span className="filter__price-text">от</span>
-                                <input
-                                    className="filter__price-input"
-                                    id="price-input-1"
-                                    placeholder="200"
-                                />
-                            </label>
-                            <label className="filter__price-label">
-                                <span className="filter__price-text">до</span>
-                                <input
-                                    className="filter__price-input"
-                                    id="price-input-2"
-                                    placeholder="199"
-                                />
-                            </label>
-                        </div>
+
+                        <PriceSlider />
                     </div>
                 </div>
             </form>
