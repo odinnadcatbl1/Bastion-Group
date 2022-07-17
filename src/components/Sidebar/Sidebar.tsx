@@ -1,4 +1,5 @@
 import PriceSlider from "../Slider/PriceSlider";
+import Checkbox from "../Checkbox/Checkbox";
 
 import "./Sidebar.scss";
 import categoryIcon from "../../assets/svg/tab-filter--red.svg";
@@ -88,8 +89,17 @@ const Sidebar: React.FC = () => {
                             Цена, руб
                             <i className="arrow-down"></i>
                         </div>
-
                         <PriceSlider />
+                    </div>
+
+                    <div className="filter__item">
+                        <div className="filter__item-name">
+                            <div>
+                                Тип продукта <img src={helpIcon} alt="help" />
+                            </div>
+                            <i className="arrow-down"></i>
+                        </div>
+                        <Checkbox label={"Проверка"} id={"1"} />
                     </div>
                 </div>
             </form>
