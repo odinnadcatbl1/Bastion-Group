@@ -1,0 +1,17 @@
+.products {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.type-filter__form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2.3rem 1.5rem;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.product__list {
+    display: flex;
+    flex-wrap: wrap;
+}

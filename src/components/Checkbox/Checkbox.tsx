@@ -1,11 +1,7 @@
 import "./Checkbox.scss";
+import { CheckboxPropTypes } from "../../types/types";
 
-type PropTypes = {
-    label: string;
-    id: string;
-};
-
-const Checkbox: React.FC<PropTypes> = ({ label, id }) => {
+const Checkbox: React.FC<CheckboxPropTypes> = ({ label, id }) => {
     return (
         <div className="checkbox">
             <input type="checkbox" className="checkbox__input" id={id} />

@@ -1,0 +1,28 @@
+.button-checkbox {
+    margin-right: 0.7rem;
+    position: relative;
+}
+
+.button-checkbox__input {
+    position: absolute;
+    appearance: none;
+
+    &:checked {
+        + .button-checkbox__label {
+            color: white;
+            background-color: #c93e33;
+        }
+    }
+}
+
+.button-checkbox__label {
+    padding: 0.6rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}

@@ -1,5 +1,6 @@
 import PageTitle from "../../PageTitle/PageTitle";
 import Sidebar from "../../Sidebar/Sidebar";
+import ProductList from "../../ProductList/ProductList";
 
 import "./Main.scss";
 
@@ -9,6 +10,7 @@ const MainPage: React.FC = () => {
             <PageTitle />
             <div className="content">
                 <Sidebar />
+                <ProductList />
             </div>
         </div>
     );
