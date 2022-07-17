@@ -19,7 +19,10 @@ const Header: React.FC = () => {
                     <nav className="header__nav">
                         <ul className="nav__list">
                             <li className="nav__link">
-                                <Link to="/">Типы товаров</Link>
+                                <Link to="/">Главная</Link>
+                            </li>
+                            <li className="nav__link">
+                                <Link to="/a">Типы товаров</Link>
                             </li>
                             <li className="nav__link">
                                 <Link to="/s">Продукты</Link>

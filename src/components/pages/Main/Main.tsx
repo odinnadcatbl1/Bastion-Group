@@ -2,6 +2,7 @@ import PageTitle from "../../PageTitle/PageTitle";
 import Sidebar from "../../Sidebar/Sidebar";
 import ProductList from "../../ProductList/ProductList";
 import Pagination from "../../Pagination/Pagination";
+import Article from "../../Article/Article";
 
 import "./Main.scss";
 
@@ -25,6 +26,8 @@ const MainPage: React.FC = () => {
 
                 <Pagination />
             </div>
+
+            <Article />
         </div>
     );
 };

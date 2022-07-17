@@ -1,0 +1,17 @@
+.article {
+    margin-top: 5rem;
+}
+
+.article__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.article__text {
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    p {
+        padding: 1rem 0;
+    }
+}
