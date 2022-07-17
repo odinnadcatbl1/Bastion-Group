@@ -102,6 +102,10 @@
 .filter__item {
     border-bottom: 1px solid #e6e6e6;
     padding: 2rem;
+
+    &:last-child {
+        border: none;
+    }
 }
 
 .filter__item-name {
@@ -115,5 +119,29 @@
 
     i {
         margin-top: 0.5rem;
+    }
+}
+
+.filter__button-container {
+    padding: 2rem;
+}
+
+.filter__button-reset {
+    font-family: inherit;
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #b3b3b3;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    background-color: white;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: #c93e33;
+        color: white;
+        background-color: #c93e33;
     }
 }

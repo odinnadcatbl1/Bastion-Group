@@ -100,7 +100,15 @@ const Sidebar: React.FC = () => {
                             <i className="arrow-down"></i>
                         </div>
                         <Checkbox label={"Проверка"} id={"1"} />
+                        <Checkbox label={"Проверка2"} id={"2"} />
+                        <Checkbox label={"Проверка3"} id={"3"} />
                     </div>
+                </div>
+
+                <div className="filter__button-container">
+                    <button className="filter__button-reset">
+                        Сбросить фильтры
+                    </button>
                 </div>
             </form>
         </div>
