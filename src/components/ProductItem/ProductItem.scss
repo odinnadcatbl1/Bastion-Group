@@ -1,5 +1,6 @@
 .product__item {
     width: calc(100% / 3);
+    min-width: 270px;
     border-right: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
     padding: 5rem 2rem 3rem 2rem;

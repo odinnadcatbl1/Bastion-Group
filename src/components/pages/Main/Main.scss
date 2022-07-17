@@ -1,1 +1,25 @@
+.main__footer {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: end;
+}
 
+.main__footer-sort {
+    display: flex;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: black;
+    align-items: center;
+    margin-right: 15rem;
+}
+
+.main__footer-sort-item {
+    margin-left: 1rem;
+    padding: 0.4rem 1rem;
+
+    &--active {
+        color: #c93e33;
+        background-color: white;
+        border-radius: 50%;
+    }
+}

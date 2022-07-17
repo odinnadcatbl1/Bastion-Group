@@ -1,6 +1,7 @@
 import PageTitle from "../../PageTitle/PageTitle";
 import Sidebar from "../../Sidebar/Sidebar";
 import ProductList from "../../ProductList/ProductList";
+import Pagination from "../../Pagination/Pagination";
 
 import "./Main.scss";
 
@@ -11,6 +12,18 @@ const MainPage: React.FC = () => {
             <div className="content">
                 <Sidebar />
                 <ProductList />
+            </div>
+            <div className="main__footer">
+                <div className="main__footer-sort">
+                    Выводить по
+                    <div className="main__footer-sort-item main__footer-sort-item--active ">
+                        9
+                    </div>
+                    <div className="main__footer-sort-item ">15</div>
+                    <div className="main__footer-sort-item ">21</div>
+                </div>
+
+                <Pagination />
             </div>
         </div>
     );
