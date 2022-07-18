@@ -18,13 +18,37 @@ const ProductItem: React.FC<IProductItem> = (product: IProductItem) => {
         }
     };
 
+    const ProductItemTags: React.FC = () => {
+        if (
+            name.toLocaleLowerCase().indexOf("а") !== -1 &&
+            name.toLocaleLowerCase().indexOf("о") !== -1
+        ) {
+            return (
+                <div className="product__item-tags">
+                    <div className="product__item-tag">Хит</div>
+                    <div className="product__item-tag">Акция</div>
+                </div>
+            );
+        } else if (name.toLocaleLowerCase().indexOf("о") !== -1) {
+            return (
+                <div className="product__item-tags">
+                    <div className="product__item-tag">Хит</div>
+                </div>
+            );
+        } else if (name.toLocaleLowerCase().indexOf("а") !== -1) {
+            return (
+                <div className="product__item-tags">
+                    <div className="product__item-tag">Акция</div>
+                </div>
+            );
+        } else {
+            return <div className="product__item-tags"></div>;
+        }
+    };
+
     return (
         <div className="product__item">
-            <div className="product__item-tags">
-                <div className="product__item-tag">Скидка</div>
-                <div className="product__item-tag">Акция</div>
-            </div>
-
+            <ProductItemTags />
             <button className="product__item-favorite">
                 <img src={favoriteIcon} alt="favorite" />В избранное
             </button>

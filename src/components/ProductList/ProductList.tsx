@@ -34,7 +34,7 @@ const ProductList: React.FC = () => {
                     key="2"
                     id={product.id}
                     type={product.type}
-                    name={product.name}
+                    name={"Трубы алюминиевые"}
                     price={product.price}
                     gost={product.gost}
                 />
@@ -43,7 +43,7 @@ const ProductList: React.FC = () => {
                     key="3"
                     id={product.id}
                     type={product.type}
-                    name={product.name}
+                    name={"Ангары"}
                     price={product.price}
                     gost={product.gost}
                 />
@@ -52,7 +52,7 @@ const ProductList: React.FC = () => {
                     key="4"
                     id={product.id}
                     type={product.type}
-                    name={product.name}
+                    name={"Опора"}
                     price={product.price}
                     gost={product.gost}
                 />
