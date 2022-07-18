@@ -20,3 +20,20 @@ export interface IProductItem {
     price: number;
     gost: string;
 }
+
+export type PageTitlePropTypes = {
+    name: string;
+    showFilter: boolean;
+};
+
+export type InputPropTypes = {
+    onChange: (str: string) => void;
+    placeholder: string;
+    id: string;
+    value?: string;
+};
+
+export type ButtonPropTypes = {
+    onClick: () => void;
+    name: string;
+};

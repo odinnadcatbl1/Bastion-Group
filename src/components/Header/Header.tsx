@@ -22,10 +22,10 @@ const Header: React.FC = () => {
                                 <Link to="/">Главная</Link>
                             </li>
                             <li className="nav__link">
-                                <Link to="/a">Типы товаров</Link>
+                                <Link to="/add-type">Типы товаров</Link>
                             </li>
                             <li className="nav__link">
-                                <Link to="/s">Продукты</Link>
+                                <Link to="/add-product">Продукты</Link>
                             </li>
                         </ul>
 

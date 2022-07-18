@@ -29,3 +29,18 @@ body {
     background-color: white;
     border: 1px solid #e6e6e6;
 }
+
+.page__wrapper {
+    margin-top: 3rem;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+}
+
+.form__wrapper {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

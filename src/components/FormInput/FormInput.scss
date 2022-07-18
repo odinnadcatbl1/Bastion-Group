@@ -1,0 +1,19 @@
+.input__wrapper {
+    padding: 1.5rem 0;
+}
+
+.form__input {
+    width: 20rem;
+    color: black;
+    font-size: 1.2rem;
+    font-family: inherit;
+    font-weight: 400;
+    padding: 1rem 2rem;
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+
+    &:focus {
+        border: 1px solid black;
+    }
+}

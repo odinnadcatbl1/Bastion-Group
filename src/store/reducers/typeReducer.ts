@@ -9,7 +9,7 @@ export const typeReducer = (
 ): TypeState[] => {
     switch (action.type) {
         case ADD_NEW_TYPE:
-            const types = state;
+            const types = { ...state };
             types.push(action.payload);
             return types;
         default:

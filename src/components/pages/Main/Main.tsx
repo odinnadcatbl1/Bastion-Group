@@ -9,7 +9,7 @@ import "./Main.scss";
 const MainPage: React.FC = () => {
     return (
         <div className="container">
-            <PageTitle />
+            <PageTitle name={"Опоры трубопроводов"} showFilter={true} />
             <div className="content">
                 <Sidebar />
                 <ProductList />
