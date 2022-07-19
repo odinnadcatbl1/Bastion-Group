@@ -1,22 +1,20 @@
 export interface TypeState {
     name: string;
-    id: number;
-}
-
-export interface TypeAction {
-    type: string;
-    payload?: any;
+    id: string;
+    isChecked: boolean;
 }
 
 export type CheckboxPropTypes = {
     label: string;
     id: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isChecked: boolean;
 };
 
 export interface IProductItem {
     id: string;
     name: string;
-    type: string;
+    type: TypeState;
     price: number;
     gost: string;
 }
@@ -26,14 +24,23 @@ export type PageTitlePropTypes = {
     showFilter: boolean;
 };
 
+export enum ValidationTypes {
+    phone = "phone",
+    email = "email",
+}
+
 export type InputPropTypes = {
-    onChange: (str: string) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     id: string;
-    value?: string;
+    value?: string | number;
+    title?: string;
+    pattern?: string;
+    validation?: ValidationTypes.email | ValidationTypes.phone;
 };
 
 export type ButtonPropTypes = {
-    onClick: () => void;
+    onClick?: () => void;
     name: string;
+    type?: "submit" | "reset" | "button";
 };

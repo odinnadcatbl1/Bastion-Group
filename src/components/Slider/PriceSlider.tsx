@@ -11,10 +11,14 @@ const PriceSlider: React.FC = () => {
     };
 
     const updatePriceInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.id === "price-input-1") {
-            setPriceValues([+e.target.value, priceValues[1]]);
+        if (+e.target.value) {
+            if (e.target.id === "price-input-1") {
+                setPriceValues([+e.target.value, priceValues[1]]);
+            } else {
+                setPriceValues([priceValues[0], +e.target.value]);
+            }
         } else {
-            setPriceValues([priceValues[0], +e.target.value]);
+            setPriceValues([priceValues[0], priceValues[1]]);
         }
     };
 

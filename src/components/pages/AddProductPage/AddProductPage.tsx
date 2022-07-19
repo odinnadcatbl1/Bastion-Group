@@ -8,9 +8,9 @@ import PageTitle from "../../PageTitle/PageTitle";
 import FormInput from "../../FormInput/FormInput";
 import FormButton from "../../FormButton/FormButton";
 
-import "./AddTypePage.scss";
+import "./AddProductPage.scss";
 
-const AddTypePage: React.FC = () => {
+const AddProductPage: React.FC = () => {
     const type = useTypedSelector((state) => state.type);
     const dispatch = useDispatch();
 
@@ -49,23 +49,40 @@ const AddTypePage: React.FC = () => {
 
     return (
         <div className="container">
-            <PageTitle name={"Типы продуктов"} showFilter={false} />
+            <PageTitle name={"Добавление продуктов"} showFilter={false} />
             <div className="page__wrapper">
                 <form className="form__wrapper" onSubmit={onAddTypeSubmit}>
                     <FormInput
-                        placeholder="ID типа продукта"
+                        placeholder="ID продукта"
                         id="form__input-1"
                         onChange={onIdInputChange}
                         value={typeId}
                         title={"ID может быть только числом"}
                     />
                     <FormInput
-                        placeholder="Название типа продукта"
+                        placeholder="Название продукта"
                         id="form__input-2"
                         onChange={onTypeInputChange}
                         value={typeName}
                         title={"Это поле не должно быть пустым"}
                     />
+
+                    <FormInput
+                        placeholder="Цена продукта"
+                        id="form__input-3"
+                        onChange={onTypeInputChange}
+                        value={typeName}
+                        title={"Это поле не должно быть пустым"}
+                    />
+
+                    <FormInput
+                        placeholder="ГОСТ продукта"
+                        id="form__input-4"
+                        onChange={onTypeInputChange}
+                        value={typeName}
+                        title={"Это поле не должно быть пустым"}
+                    />
+
                     <FormButton name={"Добавить тип продукта"} type="submit" />
                 </form>
             </div>
@@ -73,4 +90,4 @@ const AddTypePage: React.FC = () => {
     );
 };
 
-export default AddTypePage;
+export default AddProductPage;

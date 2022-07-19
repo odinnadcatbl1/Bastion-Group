@@ -5,3 +5,5 @@ import { typeReducer } from "./typeReducer";
 export const rootReducer = combineReducers({
     type: typeReducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>;

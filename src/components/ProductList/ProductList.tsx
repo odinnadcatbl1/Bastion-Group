@@ -6,7 +6,11 @@ import { IProductItem } from "../../types/types";
 const ProductList: React.FC = () => {
     const product: IProductItem = {
         id: "3123",
-        type: "type",
+        type: {
+            name: "proverka",
+            id: "1",
+            isChecked: true,
+        },
         name: "Опора тавровая хомутовая ТХ",
         price: 23102,
         gost: "ГОСТ 3231",
@@ -15,10 +19,14 @@ const ProductList: React.FC = () => {
     return (
         <div className="products">
             <form className="type-filter__form" action="/">
-                <ButtonCheckbox id={"5"} label={"ГОСТ 231-01"} />
-                <ButtonCheckbox id={"6"} label={"ГОСТ 231-01"} />
-                <ButtonCheckbox id={"7"} label={"ГОСТ 231-01"} />
-                <ButtonCheckbox id={"8"} label={"ГОСТ 231-01"} />
+                <ButtonCheckbox
+                    id={"5"}
+                    label={"ГОСТ 231-01"}
+                    isChecked={true}
+                    onChange={(e) => {
+                        console.log(e);
+                    }}
+                />
             </form>
             <div className="product__list">
                 <ProductItem

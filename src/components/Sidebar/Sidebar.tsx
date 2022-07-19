@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { changeTypeCheck } from "../../store/action-creators/type";
+
 import PriceSlider from "../Slider/PriceSlider";
 import Checkbox from "../Checkbox/Checkbox";
 
@@ -7,6 +12,13 @@ import filterIcon from "../../assets/svg/filter.svg";
 import helpIcon from "../../assets/svg/help.svg";
 
 const Sidebar: React.FC = () => {
+    const types = useTypedSelector((state) => state.type);
+    const dispatch = useDispatch();
+
+    const onCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(changeTypeCheck(e.target.id));
+    };
+
     return (
         <div className="sidebar">
             <div className="sidebar__category">
@@ -99,9 +111,17 @@ const Sidebar: React.FC = () => {
                             </div>
                             <i className="arrow-down"></i>
                         </div>
-                        <Checkbox label={"Проверка"} id={"1"} />
-                        <Checkbox label={"Проверка2"} id={"2"} />
-                        <Checkbox label={"Проверка3"} id={"3"} />
+                        {types.map((type) => {
+                            return (
+                                <Checkbox
+                                    key={type.id}
+                                    label={type.name}
+                                    id={type.id}
+                                    isChecked={type.isChecked}
+                                    onChange={onCheckBoxChange}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
 
