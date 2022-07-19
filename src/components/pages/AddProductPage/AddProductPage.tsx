@@ -6,6 +6,7 @@ import { TypeState } from "../../../types/types";
 
 import PageTitle from "../../PageTitle/PageTitle";
 import FormInput from "../../FormInput/FormInput";
+import Select from "../../Select/Select";
 import FormButton from "../../FormButton/FormButton";
 
 import "./AddProductPage.scss";
@@ -67,6 +68,8 @@ const AddProductPage: React.FC = () => {
                         title={"Это поле не должно быть пустым"}
                     />
 
+                    <Select />
+
                     <FormInput
                         placeholder="Цена продукта"
                         id="form__input-3"
@@ -83,7 +86,7 @@ const AddProductPage: React.FC = () => {
                         title={"Это поле не должно быть пустым"}
                     />
 
-                    <FormButton name={"Добавить тип продукта"} type="submit" />
+                    <FormButton name={"Добавить продукт"} type="submit" />
                 </form>
             </div>
         </div>
