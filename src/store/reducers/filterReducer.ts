@@ -12,7 +12,7 @@ export enum FilterActionTypes {
 
 interface ChangePriceFilterAction {
     type: FilterActionTypes.CHANGE_PRICE_FILTER;
-    payload: [string, string];
+    payload: [number, number];
 }
 
 interface AddGostFilterAction {
@@ -48,7 +48,7 @@ export type FilterAction =
     | DeleteTypeFilterAction;
 
 const initialState: FilterState = {
-    price: ["0", "0"],
+    price: [0, 0],
     gost: [],
     type: [],
 };

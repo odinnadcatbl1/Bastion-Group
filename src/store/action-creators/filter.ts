@@ -1,6 +1,6 @@
 import { FilterActionTypes } from "../reducers/filterReducer";
 
-export const changePriceFilter = (price: [string, string]) => ({
+export const changePriceFilter = (price: [number, number]) => ({
     type: FilterActionTypes.CHANGE_PRICE_FILTER,
     payload: price,
 });

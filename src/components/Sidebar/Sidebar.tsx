@@ -12,19 +12,32 @@ import "./Sidebar.scss";
 import categoryIcon from "../../assets/svg/tab-filter--red.svg";
 import filterIcon from "../../assets/svg/filter.svg";
 import helpIcon from "../../assets/svg/help.svg";
+import { FilteredProductsPropTypes } from "../../types/types";
+import { useEffect } from "react";
 
-const Sidebar: React.FC = () => {
-    const { type, filter, product } = useTypedSelector((state) => state);
+const Sidebar: React.FC<FilteredProductsPropTypes> = ({ filteredProducts }) => {
+    const { type } = useTypedSelector((state) => state);
     const dispatch = useDispatch();
 
-    let maxPrice = product.reduce((acc, curr) =>
-        acc.price > curr.price ? acc : curr
-    ).price;
-    let minPrice = product.reduce((acc, curr) =>
-        acc.price < curr.price ? acc : curr
-    ).price;
+    let price: [number, number] = [0, 0];
 
-    const price: [number, number] = [minPrice, maxPrice];
+    const setMinMaxPrice = () => {
+        let maxPrice = filteredProducts.reduce((acc, curr) =>
+            acc.price > curr.price ? acc : curr
+        ).price;
+
+        let minPrice = filteredProducts.reduce((acc, curr) =>
+            acc.price < curr.price ? acc : curr
+        ).price;
+
+        price = [minPrice, maxPrice];
+    };
+
+    useEffect(() => {
+        setMinMaxPrice();
+        console.log("change");
+        console.log(price);
+    }, [filteredProducts]);
 
     const onCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const changedType = type.filter((type) => type.id == e.target.id)[0]

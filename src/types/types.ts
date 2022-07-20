@@ -12,10 +12,14 @@ export interface IProductItem {
 }
 
 export interface FilterState {
-    price: [string, string];
+    price: [number, number];
     gost: string[];
     type: string[];
 }
+
+export type FilteredProductsPropTypes = {
+    filteredProducts: IProductItem[];
+};
 
 export type PageTitlePropTypes = {
     name: string;
@@ -29,7 +33,6 @@ export enum ValidationTypes {
 
 export type SliderPropTypes = {
     price: [number, number];
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type CheckboxPropTypes = {
