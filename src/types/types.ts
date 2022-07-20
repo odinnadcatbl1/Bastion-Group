@@ -3,20 +3,18 @@ export interface TypeState {
     id: string;
     isChecked: boolean;
 }
-
-export type CheckboxPropTypes = {
-    label: string;
-    id: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    isChecked: boolean;
-};
-
 export interface IProductItem {
     id: string;
     name: string;
-    type: TypeState;
+    type: string;
     price: number;
     gost: string;
+}
+
+export interface FilterState {
+    price: [string, string];
+    gost: string[];
+    type: string[];
 }
 
 export type PageTitlePropTypes = {
@@ -28,6 +26,18 @@ export enum ValidationTypes {
     phone = "phone",
     email = "email",
 }
+
+export type SliderPropTypes = {
+    price: [number, number];
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export type CheckboxPropTypes = {
+    label: string;
+    id: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isChecked?: boolean;
+};
 
 export type InputPropTypes = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -43,4 +53,16 @@ export type ButtonPropTypes = {
     onClick?: () => void;
     name: string;
     type?: "submit" | "reset" | "button";
+};
+
+interface ISelectOptions {
+    id: string;
+    name: string;
+}
+
+export type SelectPropTypes = {
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    title: string;
+    options: ISelectOptions[];
+    value: string;
 };

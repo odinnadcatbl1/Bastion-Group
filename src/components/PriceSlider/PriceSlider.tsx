@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Slider } from "@mui/material";
+import { SliderPropTypes } from "../../types/types";
 
 import "./PriceSlider.scss";
 
-const PriceSlider: React.FC = () => {
-    const [priceValues, setPriceValues] = useState([0, 100]);
+const PriceSlider: React.FC<SliderPropTypes> = ({ price }) => {
+    const [priceValues, setPriceValues] = useState([price[0], price[1]]);
 
     const updatePriceSlider = (e: any, item: any) => {
         setPriceValues(item);
@@ -48,7 +49,12 @@ const PriceSlider: React.FC = () => {
             </div>
 
             <div className="slider">
-                <Slider value={priceValues} onChange={updatePriceSlider} />
+                <Slider
+                    value={priceValues}
+                    onChange={updatePriceSlider}
+                    max={price[1]}
+                    min={price[0]}
+                />
             </div>
         </div>
     );

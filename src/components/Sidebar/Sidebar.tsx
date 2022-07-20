@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { changeTypeCheck } from "../../store/action-creators/type";
 
-import PriceSlider from "../Slider/PriceSlider";
+import PriceSlider from "../PriceSlider/PriceSlider";
 import Checkbox from "../Checkbox/Checkbox";
 
 import "./Sidebar.scss";
@@ -12,8 +12,17 @@ import filterIcon from "../../assets/svg/filter.svg";
 import helpIcon from "../../assets/svg/help.svg";
 
 const Sidebar: React.FC = () => {
-    const types = useTypedSelector((state) => state.type);
+    const { type, filter, product } = useTypedSelector((state) => state);
     const dispatch = useDispatch();
+
+    let maxPrice = product.reduce((acc, curr) =>
+        acc.price > curr.price ? acc : curr
+    ).price;
+    let minPrice = product.reduce((acc, curr) =>
+        acc.price < curr.price ? acc : curr
+    ).price;
+
+    const price: [number, number] = [minPrice, maxPrice];
 
     const onCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeTypeCheck(e.target.id));
@@ -101,7 +110,7 @@ const Sidebar: React.FC = () => {
                             Цена, руб
                             <i className="arrow-down"></i>
                         </div>
-                        <PriceSlider />
+                        <PriceSlider price={price} />
                     </div>
 
                     <div className="filter__item">
@@ -111,7 +120,7 @@ const Sidebar: React.FC = () => {
                             </div>
                             <i className="arrow-down"></i>
                         </div>
-                        {types.map((type) => {
+                        {type.map((type) => {
                             return (
                                 <Checkbox
                                     key={type.id}

@@ -42,8 +42,6 @@ const AddTypePage: React.FC = () => {
             dispatch(addNewType(newType));
             setTypeId("");
             setTypeName("");
-
-            console.log(type);
         }
     };
 

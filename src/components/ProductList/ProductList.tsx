@@ -1,69 +1,78 @@
 import "./ProductList.scss";
 import ButtonCheckbox from "../ButtonCheckbox/ButtonCheckbox";
 import ProductItem from "../ProductItem/ProductItem";
-import { IProductItem } from "../../types/types";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useDispatch } from "react-redux";
+import {
+    addGostFilter,
+    deleteGostFilter,
+} from "../../store/action-creators/filter";
+import { useState } from "react";
 
 const ProductList: React.FC = () => {
-    const product: IProductItem = {
-        id: "3123",
-        type: {
-            name: "proverka",
-            id: "1",
-            isChecked: true,
-        },
-        name: "Опора тавровая хомутовая ТХ",
-        price: 23102,
-        gost: "ГОСТ 3231",
+    const { product, filter, type } = useTypedSelector((state) => state);
+    const dispatch = useDispatch();
+    const [filteredProducts, setFilteredProducts] = useState([...product]);
+
+    const gosts = [
+        ...new Set(
+            product.map((product) => {
+                return product.gost;
+            })
+        ),
+    ];
+
+    const onButtonCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.checked) {
+            dispatch(addGostFilter(e.target.id));
+        } else {
+            dispatch(deleteGostFilter(e.target.id));
+        }
     };
 
     return (
         <div className="products">
             <form className="type-filter__form" action="/">
-                <ButtonCheckbox
-                    id={"5"}
-                    label={"ГОСТ 231-01"}
-                    isChecked={true}
-                    onChange={(e) => {
-                        console.log(e);
-                    }}
-                />
+                {gosts.map((gost) => {
+                    return (
+                        <ButtonCheckbox
+                            key={gost}
+                            id={gost}
+                            label={gost}
+                            onChange={onButtonCheckboxChange}
+                        />
+                    );
+                })}
             </form>
             <div className="product__list">
-                <ProductItem
-                    key="1"
-                    id={product.id}
-                    type={product.type}
-                    name={product.name}
-                    price={product.price}
-                    gost={product.gost}
-                />
-
-                <ProductItem
-                    key="2"
-                    id={product.id}
-                    type={product.type}
-                    name={"Трубы алюминиевые"}
-                    price={product.price}
-                    gost={product.gost}
-                />
-
-                <ProductItem
-                    key="3"
-                    id={product.id}
-                    type={product.type}
-                    name={"Ангары"}
-                    price={product.price}
-                    gost={product.gost}
-                />
-
-                <ProductItem
-                    key="4"
-                    id={product.id}
-                    type={product.type}
-                    name={"Опора"}
-                    price={product.price}
-                    gost={product.gost}
-                />
+                {product.map((product) => {
+                    if (
+                        filter.gost.length &&
+                        filter.gost.indexOf(product.gost) != -1
+                    ) {
+                        return (
+                            <ProductItem
+                                key={product.id}
+                                id={product.id}
+                                type={product.type}
+                                name={product.name}
+                                price={product.price}
+                                gost={product.gost}
+                            />
+                        );
+                    } else if (!filter.gost.length) {
+                        return (
+                            <ProductItem
+                                key={product.id}
+                                id={product.id}
+                                type={product.type}
+                                name={product.name}
+                                price={product.price}
+                                gost={product.gost}
+                            />
+                        );
+                    }
+                })}
             </div>
         </div>
     );

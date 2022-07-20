@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { addNewType } from "../../../store/action-creators/type";
-import { TypeState } from "../../../types/types";
+import { addNewProduct } from "../../../store/action-creators/product";
+import { IProductItem } from "../../../types/types";
 
 import PageTitle from "../../PageTitle/PageTitle";
 import FormInput from "../../FormInput/FormInput";
@@ -12,39 +12,79 @@ import FormButton from "../../FormButton/FormButton";
 import "./AddProductPage.scss";
 
 const AddProductPage: React.FC = () => {
-    const type = useTypedSelector((state) => state.type);
+    const { product, type } = useTypedSelector((state) => state);
     const dispatch = useDispatch();
 
-    const [typeId, setTypeId] = useState("");
-    const [typeName, setTypeName] = useState("");
+    const options = type.map((type) => {
+        return { id: type.id, name: type.name };
+    });
 
-    const onIdInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const [productId, setProductId] = useState("");
+    const [productName, setProductName] = useState("");
+    const [productType, setProductType] = useState("");
+    const [productPrice, setProductPrice] = useState("");
+    const [productGost, setProductGost] = useState("");
+
+    const onProductIdInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (+e.target.value) {
-            setTypeId(e.target.value);
+            setProductId(e.target.value);
         } else if (e.target.value == "") {
-            setTypeId("");
+            setProductId("");
         }
     };
 
-    const onTypeInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTypeName(e.target.value);
+    const onProductNameInputChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        setProductName(e.target.value);
+    };
+
+    const onProductPriceInputChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        if (+e.target.value) {
+            setProductPrice(e.target.value);
+        } else if (e.target.value == "") {
+            setProductPrice("");
+        }
+    };
+
+    const onProductGostInputChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        setProductGost(e.target.value);
+    };
+
+    const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setProductType(e.target.value);
     };
 
     const onAddTypeSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (typeId !== "" && typeName !== "") {
-            const newType: TypeState = {
-                name: typeName,
-                id: typeId,
-                isChecked: false,
+        if (
+            productId != "" &&
+            productName != "" &&
+            productGost != "" &&
+            productPrice != "" &&
+            productType != ""
+        ) {
+            const newProduct: IProductItem = {
+                name: productName,
+                id: productId,
+                type: productType,
+                gost: productGost,
+                price: +productPrice,
             };
 
-            dispatch(addNewType(newType));
-            setTypeId("");
-            setTypeName("");
+            dispatch(addNewProduct(newProduct));
+            setProductId("");
+            setProductName("");
+            setProductType("");
+            setProductGost("");
+            setProductPrice("");
 
-            console.log(type);
+            console.log(product);
         }
     };
 
@@ -56,33 +96,38 @@ const AddProductPage: React.FC = () => {
                     <FormInput
                         placeholder="ID продукта"
                         id="form__input-1"
-                        onChange={onIdInputChange}
-                        value={typeId}
+                        onChange={onProductIdInputChange}
+                        value={productId}
                         title={"ID может быть только числом"}
                     />
                     <FormInput
                         placeholder="Название продукта"
                         id="form__input-2"
-                        onChange={onTypeInputChange}
-                        value={typeName}
+                        onChange={onProductNameInputChange}
+                        value={productName}
                         title={"Это поле не должно быть пустым"}
                     />
 
-                    <Select />
+                    <Select
+                        title={"Выберите тип продукта:"}
+                        onChange={onSelectChange}
+                        options={options}
+                        value={productType}
+                    />
 
                     <FormInput
                         placeholder="Цена продукта"
                         id="form__input-3"
-                        onChange={onTypeInputChange}
-                        value={typeName}
+                        onChange={onProductPriceInputChange}
+                        value={productPrice}
                         title={"Это поле не должно быть пустым"}
                     />
 
                     <FormInput
                         placeholder="ГОСТ продукта"
                         id="form__input-4"
-                        onChange={onTypeInputChange}
-                        value={typeName}
+                        onChange={onProductGostInputChange}
+                        value={productGost}
                         title={"Это поле не должно быть пустым"}
                     />
 
