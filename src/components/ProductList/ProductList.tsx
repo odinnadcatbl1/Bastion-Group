@@ -7,12 +7,29 @@ import {
     addGostFilter,
     deleteGostFilter,
 } from "../../store/action-creators/filter";
-import { useState } from "react";
+import { IProductItem } from "../../types/types";
 
 const ProductList: React.FC = () => {
     const { product, filter, type } = useTypedSelector((state) => state);
     const dispatch = useDispatch();
-    const [filteredProducts, setFilteredProducts] = useState([...product]);
+
+    const filteredProducts: IProductItem[] = product.filter((product) => {
+        if (filter.gost.length == 0) {
+            if (filter.type.length == 0) {
+                return true;
+            } else if (filter.type.includes(product.type)) {
+                return true;
+            }
+        } else if (filter.gost.includes(product.gost)) {
+            if (filter.type.length == 0) {
+                return true;
+            } else if (filter.type.includes(product.type)) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    });
 
     const gosts = [
         ...new Set(
@@ -30,6 +47,7 @@ const ProductList: React.FC = () => {
         }
     };
 
+    console.log(filter.gost, filter.type);
     return (
         <div className="products">
             <form className="type-filter__form" action="/">
@@ -45,33 +63,17 @@ const ProductList: React.FC = () => {
                 })}
             </form>
             <div className="product__list">
-                {product.map((product) => {
-                    if (
-                        filter.gost.length &&
-                        filter.gost.indexOf(product.gost) != -1
-                    ) {
-                        return (
-                            <ProductItem
-                                key={product.id}
-                                id={product.id}
-                                type={product.type}
-                                name={product.name}
-                                price={product.price}
-                                gost={product.gost}
-                            />
-                        );
-                    } else if (!filter.gost.length) {
-                        return (
-                            <ProductItem
-                                key={product.id}
-                                id={product.id}
-                                type={product.type}
-                                name={product.name}
-                                price={product.price}
-                                gost={product.gost}
-                            />
-                        );
-                    }
+                {filteredProducts.map((product) => {
+                    return (
+                        <ProductItem
+                            key={product.id}
+                            id={product.id}
+                            type={product.type}
+                            name={product.name}
+                            price={product.price}
+                            gost={product.gost}
+                        />
+                    );
                 })}
             </div>
         </div>

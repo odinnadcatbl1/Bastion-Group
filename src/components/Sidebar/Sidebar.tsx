@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { changeTypeCheck } from "../../store/action-creators/type";
+import { addTypeFilter } from "../../store/action-creators/filter";
+import { deleteTypeFilter } from "../../store/action-creators/filter";
 
 import PriceSlider from "../PriceSlider/PriceSlider";
 import Checkbox from "../Checkbox/Checkbox";
@@ -25,7 +27,14 @@ const Sidebar: React.FC = () => {
     const price: [number, number] = [minPrice, maxPrice];
 
     const onCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const changedType = type.filter((type) => type.id == e.target.id)[0]
+            .name;
         dispatch(changeTypeCheck(e.target.id));
+        if (!e.target.checked) {
+            dispatch(deleteTypeFilter(changedType));
+        } else {
+            dispatch(addTypeFilter(changedType));
+        }
     };
 
     return (

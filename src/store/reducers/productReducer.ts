@@ -40,6 +40,14 @@ const initialState: IProductItem[] = [
         price: 4323,
         gost: "ГОСТ 33",
     },
+
+    {
+        id: "5",
+        type: "dsa",
+        name: "Опора тавровая хомутовая ТРИ",
+        price: 4323,
+        gost: "ГОСТ 55",
+    },
 ];
 
 export const productReducer = (state = initialState, action: ProductAction) => {

@@ -83,8 +83,6 @@ const AddProductPage: React.FC = () => {
             setProductType("");
             setProductGost("");
             setProductPrice("");
-
-            console.log(product);
         }
     };
 

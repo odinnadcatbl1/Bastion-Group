@@ -16,12 +16,12 @@ export const deleteGostFilter = (gost: string) => ({
 });
 
 export const addTypeFilter = (type: string) => ({
-    type: FilterActionTypes.ADD_GOST_FILTER,
+    type: FilterActionTypes.ADD_TYPE_FILTER,
     payload: type,
 });
 
 export const deleteTypeFilter = (type: string) => ({
-    type: FilterActionTypes.DELETE_GOST_FILTER,
+    type: FilterActionTypes.DELETE_TYPE_FILTER,
     payload: type,
 });
 

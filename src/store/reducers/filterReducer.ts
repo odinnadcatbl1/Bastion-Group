@@ -77,7 +77,7 @@ export const filterReducer = (
             const newType = state.type.filter((type) => {
                 return type !== action.payload;
             });
-            return { ...state, gost: [...newType] };
+            return { ...state, type: [...newType] };
 
         case FilterActionTypes.RESET_ALL_FILTERS:
             return initialState;
