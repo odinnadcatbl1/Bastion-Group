@@ -11,17 +11,24 @@ const MainPage: React.FC = () => {
     const { product, filter } = useTypedSelector((state) => state);
 
     const filteredProducts: IProductItem[] = product.filter((product) => {
-        if (filter.gost.length == 0) {
-            if (filter.type.length == 0) {
-                return true;
-            } else if (filter.type.includes(product.type)) {
-                return true;
-            }
-        } else if (filter.gost.includes(product.gost)) {
-            if (filter.type.length == 0) {
-                return true;
-            } else if (filter.type.includes(product.type)) {
-                return true;
+        if (
+            product.price >= filter.price[0] &&
+            product.price <= filter.price[1]
+        ) {
+            if (filter.gost.length === 0) {
+                if (filter.type.length === 0) {
+                    return true;
+                } else if (filter.type.includes(product.type)) {
+                    return true;
+                }
+            } else if (filter.gost.includes(product.gost)) {
+                if (filter.type.length === 0) {
+                    return true;
+                } else if (filter.type.includes(product.type)) {
+                    return true;
+                }
+            } else {
+                return false;
             }
         } else {
             return false;
@@ -32,7 +39,7 @@ const MainPage: React.FC = () => {
         <div className="container">
             <PageTitle name={"Опоры трубопроводов"} showFilter={true} />
             <div className="content">
-                <Sidebar filteredProducts={filteredProducts} />
+                <Sidebar />
                 <ProductList filteredProducts={filteredProducts} />
             </div>
             <div className="main__footer">

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { addNewType } from "../../../store/action-creators/type";
 import { TypeState } from "../../../types/types";
 
@@ -11,7 +10,6 @@ import FormButton from "../../FormButton/FormButton";
 import "./AddTypePage.scss";
 
 const AddTypePage: React.FC = () => {
-    const type = useTypedSelector((state) => state.type);
     const dispatch = useDispatch();
 
     const [typeId, setTypeId] = useState("");
@@ -20,7 +18,7 @@ const AddTypePage: React.FC = () => {
     const onIdInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (+e.target.value) {
             setTypeId(e.target.value);
-        } else if (e.target.value == "") {
+        } else if (e.target.value === "") {
             setTypeId("");
         }
     };

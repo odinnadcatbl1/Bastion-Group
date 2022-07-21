@@ -6,7 +6,7 @@ import cartIcon from "../../assets/svg/cart-white.svg";
 import "./ProductItem.scss";
 
 const ProductItem: React.FC<IProductItem> = (product: IProductItem) => {
-    const { id, name, type, price, gost } = product;
+    const { name, price, gost } = product;
 
     const [cartCount, setCartCount] = useState(0);
 

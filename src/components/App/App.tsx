@@ -1,4 +1,3 @@
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/Main/Main";
 import AddTypePage from "../pages/AddTypePage/AddTypePage";
@@ -9,7 +8,6 @@ import Footer from "../Footer/Footer";
 import "./App.scss";
 
 const App: React.FC = () => {
-    const state = useTypedSelector((state) => state.type);
     return (
         <div className="app">
             <Router>

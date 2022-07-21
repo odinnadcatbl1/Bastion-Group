@@ -1,8 +1,10 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { changeTypeCheck } from "../../store/action-creators/type";
-import { addTypeFilter } from "../../store/action-creators/filter";
+import {
+    addTypeFilter,
+    changePriceFilter,
+} from "../../store/action-creators/filter";
 import { deleteTypeFilter } from "../../store/action-creators/filter";
 
 import PriceSlider from "../PriceSlider/PriceSlider";
@@ -12,35 +14,30 @@ import "./Sidebar.scss";
 import categoryIcon from "../../assets/svg/tab-filter--red.svg";
 import filterIcon from "../../assets/svg/filter.svg";
 import helpIcon from "../../assets/svg/help.svg";
-import { FilteredProductsPropTypes } from "../../types/types";
 import { useEffect } from "react";
 
-const Sidebar: React.FC<FilteredProductsPropTypes> = ({ filteredProducts }) => {
-    const { type } = useTypedSelector((state) => state);
+const Sidebar: React.FC = () => {
+    const { type, product } = useTypedSelector((state) => state);
     const dispatch = useDispatch();
 
     let price: [number, number] = [0, 0];
 
-    const setMinMaxPrice = () => {
-        let maxPrice = filteredProducts.reduce((acc, curr) =>
-            acc.price > curr.price ? acc : curr
-        ).price;
+    let maxPrice = product.reduce((acc, curr) =>
+        acc.price > curr.price ? acc : curr
+    ).price;
 
-        let minPrice = filteredProducts.reduce((acc, curr) =>
-            acc.price < curr.price ? acc : curr
-        ).price;
+    let minPrice = product.reduce((acc, curr) =>
+        acc.price < curr.price ? acc : curr
+    ).price;
 
-        price = [minPrice, maxPrice];
-    };
+    price = [minPrice, maxPrice];
 
     useEffect(() => {
-        setMinMaxPrice();
-        console.log("change");
-        console.log(price);
-    }, [filteredProducts]);
+        dispatch(changePriceFilter(price));
+    }, []);
 
     const onCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const changedType = type.filter((type) => type.id == e.target.id)[0]
+        const changedType = type.filter((type) => type.id === e.target.id)[0]
             .name;
         dispatch(changeTypeCheck(e.target.id));
         if (!e.target.checked) {

@@ -14,9 +14,9 @@ const FormInput: React.FC<InputPropTypes> = ({
 }) => {
     let type = "text";
 
-    if (validation == ValidationTypes.email) {
+    if (validation === ValidationTypes.email) {
         type = "email";
-    } else if (validation == ValidationTypes.phone) {
+    } else if (validation === ValidationTypes.phone) {
         pattern = "(7|8|9)d{10|11}";
     }
 

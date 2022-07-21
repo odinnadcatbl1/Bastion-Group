@@ -12,7 +12,7 @@ import FormButton from "../../FormButton/FormButton";
 import "./AddProductPage.scss";
 
 const AddProductPage: React.FC = () => {
-    const { product, type } = useTypedSelector((state) => state);
+    const { type } = useTypedSelector((state) => state);
     const dispatch = useDispatch();
 
     const options = type.map((type) => {
@@ -28,7 +28,7 @@ const AddProductPage: React.FC = () => {
     const onProductIdInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (+e.target.value) {
             setProductId(e.target.value);
-        } else if (e.target.value == "") {
+        } else if (e.target.value === "") {
             setProductId("");
         }
     };
@@ -44,7 +44,7 @@ const AddProductPage: React.FC = () => {
     ) => {
         if (+e.target.value) {
             setProductPrice(e.target.value);
-        } else if (e.target.value == "") {
+        } else if (e.target.value === "") {
             setProductPrice("");
         }
     };
@@ -63,11 +63,11 @@ const AddProductPage: React.FC = () => {
         e.preventDefault();
 
         if (
-            productId != "" &&
-            productName != "" &&
-            productGost != "" &&
-            productPrice != "" &&
-            productType != ""
+            productId !== "" &&
+            productName !== "" &&
+            productGost !== "" &&
+            productPrice !== "" &&
+            productType !== ""
         ) {
             const newProduct: IProductItem = {
                 name: productName,

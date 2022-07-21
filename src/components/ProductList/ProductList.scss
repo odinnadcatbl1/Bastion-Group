@@ -15,3 +15,12 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.product__list-empty {
+    width: 100%;
+    text-align: center;
+    margin-top: 30%;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #b3b3b3;
+}

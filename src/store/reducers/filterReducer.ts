@@ -1,5 +1,4 @@
 import { FilterState } from "../../types/types";
-import { IProductItem } from "../../types/types";
 
 export enum FilterActionTypes {
     CHANGE_PRICE_FILTER = "CHANGE_PRICE_FILTER",

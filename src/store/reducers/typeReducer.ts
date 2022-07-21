@@ -21,7 +21,7 @@ const initialState: TypeState[] = [];
 
 const checkType = (state: TypeState[], id: string) => {
     const newState = state.map((type) => {
-        if (type.id == id) {
+        if (type.id === id) {
             const newType: TypeState = {
                 id: type.id,
                 name: type.name,

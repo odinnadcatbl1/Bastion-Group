@@ -31,6 +31,30 @@ const ProductList: React.FC<FilteredProductsPropTypes> = ({
         }
     };
 
+    if (!filteredProducts.length) {
+        return (
+            <div className="products">
+                <form className="type-filter__form" action="/">
+                    {gosts.map((gost) => {
+                        return (
+                            <ButtonCheckbox
+                                key={gost}
+                                id={gost}
+                                label={gost}
+                                onChange={onButtonCheckboxChange}
+                            />
+                        );
+                    })}
+                </form>
+                <div className="product__list">
+                    <div className="product__list-empty">
+                        К сожалению, таких товаров не найдено :(
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="products">
             <form className="type-filter__form" action="/">
@@ -47,22 +71,16 @@ const ProductList: React.FC<FilteredProductsPropTypes> = ({
             </form>
             <div className="product__list">
                 {filteredProducts.map((product) => {
-                    if (
-                        product.price >= filter.price[0] &&
-                        product.price <= filter.price[1]
-                    ) {
-                        console.log("ok");
-                        return (
-                            <ProductItem
-                                key={product.id}
-                                id={product.id}
-                                type={product.type}
-                                name={product.name}
-                                price={product.price}
-                                gost={product.gost}
-                            />
-                        );
-                    }
+                    return (
+                        <ProductItem
+                            key={product.id}
+                            id={product.id}
+                            type={product.type}
+                            name={product.name}
+                            price={product.price}
+                            gost={product.gost}
+                        />
+                    );
                 })}
             </div>
         </div>

@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Slider } from "@mui/material";
 import { SliderPropTypes } from "../../types/types";
 import { changePriceFilter } from "../../store/action-creators/filter";
 import { useDispatch } from "react-redux";
 
 import "./PriceSlider.scss";
-import { useEffect } from "react";
 
 const PriceSlider: React.FC<SliderPropTypes> = ({ price }) => {
     const [priceValues, setPriceValues] = useState([price[0], price[1]]);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(changePriceFilter([priceValues[0], priceValues[1]]));
+    }, priceValues);
 
     const updatePriceSlider = (e: any, item: any) => {
         setPriceValues(item);
@@ -26,13 +29,7 @@ const PriceSlider: React.FC<SliderPropTypes> = ({ price }) => {
         } else {
             setPriceValues([priceValues[0], priceValues[1]]);
         }
-
-        dispatch(changePriceFilter([priceValues[0], priceValues[1]]));
     };
-
-    useEffect(() => {
-        setPriceValues([price[0], price[1]]);
-    }, [price]);
 
     return (
         <div className="slider__container">
