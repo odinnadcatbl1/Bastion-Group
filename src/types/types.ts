@@ -73,3 +73,9 @@ export type SelectPropTypes = {
     options: ISelectOptions[];
     value: string;
 };
+
+export type CartInputPropTypes = {
+    img: any;
+    id: string;
+    label: string;
+};
