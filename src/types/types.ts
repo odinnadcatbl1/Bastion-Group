@@ -11,6 +11,10 @@ export interface IProductItem {
     gost: string;
 }
 
+export interface ICartProductItem extends IProductItem {
+    count: number;
+}
+
 export interface FilterState {
     price: [number, number];
     gost: string[];

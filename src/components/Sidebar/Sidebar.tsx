@@ -55,8 +55,6 @@ const Sidebar: React.FC = () => {
         dispatch(changePriceFilter(price));
     };
 
-    console.log(filter.gost);
-
     return (
         <div className="sidebar">
             <div className="sidebar__category">

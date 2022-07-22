@@ -137,6 +137,10 @@
     display: flex;
     margin-left: 4.2rem;
     align-items: center;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .header__icon {
@@ -148,6 +152,7 @@
     font-weight: 300;
     line-height: 1.2;
     cursor: pointer;
+    color: black;
 
     &:first-child {
         margin-right: 3.6rem;

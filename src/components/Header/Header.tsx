@@ -85,12 +85,13 @@ const Header: React.FC = () => {
                                 <img src={starIcon} alt="star" />
                                 Избранное
                             </div>
-
-                            <div className="header__icon">
-                                <img src={cartIcon} alt="cart" />
-                                Корзина
-                                <div className="cart__count">2</div>
-                            </div>
+                            <Link to="/cart-page">
+                                <div className="header__icon">
+                                    <img src={cartIcon} alt="cart" />
+                                    Корзина
+                                    <div className="cart__count">2</div>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
