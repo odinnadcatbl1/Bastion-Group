@@ -5,7 +5,10 @@ import {
     addTypeFilter,
     changePriceFilter,
 } from "../../store/action-creators/filter";
-import { deleteTypeFilter } from "../../store/action-creators/filter";
+import {
+    deleteTypeFilter,
+    resetAllFilters,
+} from "../../store/action-creators/filter";
 
 import PriceSlider from "../PriceSlider/PriceSlider";
 import Checkbox from "../Checkbox/Checkbox";
@@ -14,10 +17,10 @@ import "./Sidebar.scss";
 import categoryIcon from "../../assets/svg/tab-filter--red.svg";
 import filterIcon from "../../assets/svg/filter.svg";
 import helpIcon from "../../assets/svg/help.svg";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const Sidebar: React.FC = () => {
-    const { type, product } = useTypedSelector((state) => state);
+    const { type, product, filter } = useTypedSelector((state) => state);
     const dispatch = useDispatch();
 
     let price: [number, number] = [0, 0];
@@ -32,10 +35,6 @@ const Sidebar: React.FC = () => {
 
     price = [minPrice, maxPrice];
 
-    useEffect(() => {
-        dispatch(changePriceFilter(price));
-    }, []);
-
     const onCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const changedType = type.filter((type) => type.id === e.target.id)[0]
             .name;
@@ -46,6 +45,17 @@ const Sidebar: React.FC = () => {
             dispatch(addTypeFilter(changedType));
         }
     };
+
+    const onResetAllFilters = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        dispatch(resetAllFilters());
+        type.map((type) => {
+            type.isChecked = false;
+        });
+        dispatch(changePriceFilter(price));
+    };
+
+    console.log(filter.gost);
 
     return (
         <div className="sidebar">
@@ -154,7 +164,10 @@ const Sidebar: React.FC = () => {
                 </div>
 
                 <div className="filter__button-container">
-                    <button className="filter__button-reset">
+                    <button
+                        className="filter__button-reset"
+                        onClick={onResetAllFilters}
+                    >
                         Сбросить фильтры
                     </button>
                 </div>

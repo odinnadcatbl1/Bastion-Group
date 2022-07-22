@@ -79,7 +79,11 @@ export const filterReducer = (
             return { ...state, type: [...newType] };
 
         case FilterActionTypes.RESET_ALL_FILTERS:
-            return initialState;
+            return {
+                ...state,
+                type: initialState.type,
+                gost: initialState.gost,
+            };
 
         default:
             return state;

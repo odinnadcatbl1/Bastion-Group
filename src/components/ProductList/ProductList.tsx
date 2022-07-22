@@ -42,6 +42,7 @@ const ProductList: React.FC<FilteredProductsPropTypes> = ({
                                 id={gost}
                                 label={gost}
                                 onChange={onButtonCheckboxChange}
+                                isChecked={filter.gost.includes(gost)}
                             />
                         );
                     })}
@@ -65,6 +66,7 @@ const ProductList: React.FC<FilteredProductsPropTypes> = ({
                             id={gost}
                             label={gost}
                             onChange={onButtonCheckboxChange}
+                            isChecked={filter.gost.includes(gost)}
                         />
                     );
                 })}

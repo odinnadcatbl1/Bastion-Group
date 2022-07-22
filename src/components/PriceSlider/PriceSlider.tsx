@@ -3,31 +3,31 @@ import { Slider } from "@mui/material";
 import { SliderPropTypes } from "../../types/types";
 import { changePriceFilter } from "../../store/action-creators/filter";
 import { useDispatch } from "react-redux";
-
 import "./PriceSlider.scss";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const PriceSlider: React.FC<SliderPropTypes> = ({ price }) => {
-    const [priceValues, setPriceValues] = useState([price[0], price[1]]);
+    const filter = useTypedSelector((state) => state.filter);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(changePriceFilter([priceValues[0], priceValues[1]]));
-    }, priceValues);
+        dispatch(changePriceFilter([price[0], price[1]]));
+    }, price);
 
     const updatePriceSlider = (e: any, item: any) => {
-        setPriceValues(item);
+        dispatch(changePriceFilter(item));
     };
 
     const updatePriceInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (+e.target.value) {
             if (e.target.id === "price-input-1") {
-                setPriceValues([+e.target.value, priceValues[1]]);
+                dispatch(changePriceFilter([+e.target.value, price[1]]));
             } else {
-                setPriceValues([priceValues[0], +e.target.value]);
+                dispatch(changePriceFilter([price[0], +e.target.value]));
             }
         } else {
-            setPriceValues([priceValues[0], priceValues[1]]);
+            dispatch(changePriceFilter([price[0], price[1]]));
         }
     };
 
@@ -39,8 +39,7 @@ const PriceSlider: React.FC<SliderPropTypes> = ({ price }) => {
                     <input
                         className="filter__price-input"
                         id="price-input-1"
-                        placeholder="200"
-                        value={priceValues[0]}
+                        value={filter.price[0]}
                         onChange={updatePriceInput}
                     />
                 </label>
@@ -49,8 +48,7 @@ const PriceSlider: React.FC<SliderPropTypes> = ({ price }) => {
                     <input
                         className="filter__price-input"
                         id="price-input-2"
-                        placeholder="199"
-                        value={priceValues[1]}
+                        value={filter.price[1]}
                         onChange={updatePriceInput}
                     />
                 </label>
@@ -58,7 +56,7 @@ const PriceSlider: React.FC<SliderPropTypes> = ({ price }) => {
 
             <div className="slider">
                 <Slider
-                    value={priceValues}
+                    value={filter.price}
                     onChange={updatePriceSlider}
                     max={price[1]}
                     min={price[0]}
