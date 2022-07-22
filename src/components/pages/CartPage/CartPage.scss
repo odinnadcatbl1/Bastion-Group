@@ -16,6 +16,7 @@
 
 .cart__page-left {
     width: 100%;
+    border-right: 1px solid #e6e6e6;
 }
 
 .cart__warning {
@@ -40,7 +41,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border-right: 1px solid #e6e6e6;
 }
 
 .cart__reset-btn {
