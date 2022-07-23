@@ -19,10 +19,10 @@ const CartForm: React.FC = () => {
         case: "",
     });
 
-    const name = useInput("");
-    const phone = useInput("");
-    const email = useInput("");
-    const organization = useInput("");
+    const name = useInput("", { isEmpty: true, minLength: 5 });
+    const phone = useInput("", { isEmpty: true, isPhoneError: false });
+    const email = useInput("", { isEmpty: true, isEmailError: false });
+    const organization = useInput("", { isEmpty: true, minLength: 5 });
 
     let cartSum = 0;
 
@@ -39,7 +39,13 @@ const CartForm: React.FC = () => {
         <div className="cart__form-wrapper">
             <div className="cart__form-title">Контактная информация</div>
             <form className="cart__form">
-                <div className="cart__input-wrapper">
+                <div
+                    className={`cart__input-wrapper cart__input-wrapper${
+                        name.isDirty && (name.minLengthError || name.isEmpty)
+                            ? "--error"
+                            : ""
+                    }`}
+                >
                     <img src={userIcon} alt="" />
                     <input
                         className="cart__form-input"
@@ -55,7 +61,13 @@ const CartForm: React.FC = () => {
                     </label>
                 </div>
 
-                <div className="cart__input-wrapper">
+                <div
+                    className={`cart__input-wrapper cart__input-wrapper${
+                        phone.isDirty && (phone.isEmpty || phone.isPhoneError)
+                            ? "--error"
+                            : ""
+                    }`}
+                >
                     <img src={phoneIcon} alt="" />
                     <input
                         className="cart__form-input"
@@ -71,7 +83,13 @@ const CartForm: React.FC = () => {
                     </label>
                 </div>
 
-                <div className="cart__input-wrapper">
+                <div
+                    className={`cart__input-wrapper cart__input-wrapper${
+                        email.isDirty && (email.isEmpty || email.isEmailError)
+                            ? "--error"
+                            : ""
+                    }`}
+                >
                     <img src={emailIcon} alt="" />
                     <input
                         className="cart__form-input"
@@ -87,7 +105,14 @@ const CartForm: React.FC = () => {
                     </label>
                 </div>
 
-                <div className="cart__input-wrapper">
+                <div
+                    className={`cart__input-wrapper cart__input-wrapper${
+                        organization.isDirty &&
+                        (organization.minLengthError || organization.isEmpty)
+                            ? "--error"
+                            : ""
+                    }`}
+                >
                     <img src={caseIcon} alt="" />
                     <input
                         className="cart__form-input"
