@@ -16,10 +16,10 @@ const CartForm: React.FC = () => {
         name: "",
         email: "",
         phone: "",
-        case: "",
+        organization: "",
     });
 
-    const name = useInput("", { isEmpty: true, minLength: 5 });
+    const name = useInput("", { isEmpty: true, minLength: 5, isString: false });
     const phone = useInput("", { isEmpty: true, isPhoneError: false });
     const email = useInput("", { isEmpty: true, isEmailError: false });
     const organization = useInput("", { isEmpty: true, minLength: 5 });
@@ -32,6 +32,12 @@ const CartForm: React.FC = () => {
 
     const onCheckout = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        setUserInfo({
+            name: name.value,
+            email: email.value,
+            phone: phone.value,
+            organization: organization.value,
+        });
         console.log(cart, userInfo);
     };
 
@@ -135,6 +141,12 @@ const CartForm: React.FC = () => {
                 <div className="cart__form-actions">
                     <button
                         className="cart__btn cart__btn--buy"
+                        disabled={
+                            !name.inputValid ||
+                            !phone.inputValid ||
+                            !email.inputValid ||
+                            !organization.inputValid
+                        }
                         onClick={onCheckout}
                     >
                         <img src={cartIcon} alt="" />

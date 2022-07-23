@@ -5,6 +5,8 @@ export const useValidation = (value: string, validations: any) => {
     const [isEmailError, setEmailError] = useState(false);
     const [isPhoneError, setPhoneError] = useState(false);
     const [minLengthError, setMinLengthError] = useState(false);
+    const [isStringError, setStringError] = useState(false);
+    const [inputValid, setInputValid] = useState(false);
 
     useEffect(() => {
         for (const validation in validations) {
@@ -30,14 +32,29 @@ export const useValidation = (value: string, validations: any) => {
                         ? setMinLengthError(true)
                         : setMinLengthError(false);
                     break;
+                case "isString":
+                    const reStr = /^[a-zA-Z?а-яА-Я]*$/;
+                    reStr.test(value)
+                        ? setStringError(false)
+                        : setStringError(true);
             }
         }
     }, [value]);
+
+    useEffect(() => {
+        if (isEmpty || isEmailError || isPhoneError || minLengthError) {
+            setInputValid(false);
+        } else {
+            setInputValid(true);
+        }
+    });
 
     return {
         isEmpty,
         isEmailError,
         isPhoneError,
         minLengthError,
+        isStringError,
+        inputValid,
     };
 };
