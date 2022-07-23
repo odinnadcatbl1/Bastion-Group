@@ -10,8 +10,11 @@ import searchIcon from "../../assets/svg/search.svg";
 import arrowIcon from "../../assets/svg/arrow.svg";
 import starIcon from "../../assets/svg/star.svg";
 import cartIcon from "../../assets/svg/cart.svg";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const Header: React.FC = () => {
+    const cart = useTypedSelector((state) => state.cart);
+
     return (
         <header className="header">
             <div className="header__top">
@@ -89,7 +92,9 @@ const Header: React.FC = () => {
                                 <div className="header__icon">
                                     <img src={cartIcon} alt="cart" />
                                     Корзина
-                                    <div className="cart__count">2</div>
+                                    <div className="cart__count">
+                                        {cart.length}
+                                    </div>
                                 </div>
                             </Link>
                         </div>

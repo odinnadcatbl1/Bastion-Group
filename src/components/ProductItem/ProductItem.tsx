@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { IProductItem } from "../../types/types";
+import {
+    addToCart,
+    setCartProductCount,
+} from "../../store/action-creators/cart";
 
 import favoriteIcon from "../../assets/svg/star-grey.svg";
 import cartIcon from "../../assets/svg/cart-white.svg";
 import "./ProductItem.scss";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const ProductItem: React.FC<IProductItem> = (product: IProductItem) => {
-    const { name, price, gost } = product;
+    const cart = useTypedSelector((state) => state.cart);
+    const dispatch = useDispatch();
+    const { name, price, gost, id } = product;
 
     const [cartCount, setCartCount] = useState(0);
 
@@ -15,6 +23,29 @@ const ProductItem: React.FC<IProductItem> = (product: IProductItem) => {
             setCartCount(+e.target.value);
         } else if (!e.target.value) {
             setCartCount(0);
+        }
+    };
+
+    const onAddedToCart = () => {
+        if (cartCount) {
+            const cartProduct = cart.filter((cart) => {
+                if (cart.id === id) {
+                    return true;
+                }
+            });
+
+            if (cartProduct.length !== 0) {
+                dispatch(
+                    setCartProductCount([
+                        cartProduct[0].id,
+                        cartProduct[0].count + cartCount,
+                    ])
+                );
+                setCartCount(0);
+            } else {
+                dispatch(addToCart({ ...product, count: cartCount }));
+                setCartCount(0);
+            }
         }
     };
 
@@ -93,7 +124,10 @@ const ProductItem: React.FC<IProductItem> = (product: IProductItem) => {
             </div>
 
             <div className="product__item-actions">
-                <button className="product__cart-button">
+                <button
+                    className="product__cart-button"
+                    onClick={onAddedToCart}
+                >
                     <img src={cartIcon} alt="to cart" /> В корзину
                 </button>
                 <button className="product__about-button">Подробнее</button>

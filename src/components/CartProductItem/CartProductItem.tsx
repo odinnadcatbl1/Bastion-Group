@@ -1,15 +1,31 @@
 import { ICartProductItem } from "../../types/types";
-import { useState } from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useDispatch } from "react-redux";
+import {
+    setCartProductCount,
+    deleteFromCart,
+} from "../../store/action-creators/cart";
 
 import trashIcon from "../../assets/svg/trash.svg";
 import "./CartProductItem.scss";
+import React from "react";
 
 const CartProductItem: React.FC<ICartProductItem> = ({
+    id,
     name,
     price,
     gost,
     count,
 }) => {
+    const { cart, product } = useTypedSelector((state) => state);
+    const dispatch = useDispatch();
+
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (+e.target.value !== 0) {
+            dispatch(setCartProductCount([id, +e.target.value]));
+        }
+    };
+
     return (
         <div className="cart__product">
             <div className="cart__info-wrapper">
@@ -33,15 +49,24 @@ const CartProductItem: React.FC<ICartProductItem> = ({
                     <button
                         className="cart__button"
                         id="add-btn"
-                        onClick={() => {}}
+                        onClick={() => {
+                            dispatch(setCartProductCount([id, count + 1]));
+                        }}
                     >
                         +
                     </button>
-                    <input type="text" className="cart__input" value={2} />
+                    <input
+                        type="text"
+                        className="cart__input"
+                        value={count}
+                        onChange={onInputChange}
+                    />
                     <button
                         className="cart__button"
                         id="del-btn"
-                        onClick={() => {}}
+                        onClick={() => {
+                            dispatch(setCartProductCount([id, count - 1]));
+                        }}
                     >
                         -
                     </button>
@@ -49,7 +74,12 @@ const CartProductItem: React.FC<ICartProductItem> = ({
 
                 <div className="cart__price">{(count * price).toFixed(1)}</div>
 
-                <button className="cart__actions-delete">
+                <button
+                    className="cart__actions-delete"
+                    onClick={() => {
+                        dispatch(deleteFromCart(id));
+                    }}
+                >
                     <img src={trashIcon} alt="" />
                 </button>
             </div>

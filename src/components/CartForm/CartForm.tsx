@@ -8,8 +8,19 @@ import caseIcon from "../../assets/svg/briefcase.svg";
 import cartIcon from "../../assets/svg/cart-white-2.svg";
 import docIcon from "../../assets/svg/file-text.svg";
 import downloadIcon from "../../assets/svg/download.svg";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import React, { useState } from "react";
 
 const CartForm: React.FC = () => {
+    const cart = useTypedSelector((state) => state.cart);
+    const [userInfo, setUserInfo] = useState({});
+
+    let cartSum = 0;
+
+    cart.forEach((e) => {
+        cartSum = cartSum + e.price * e.count;
+    });
+
     const inputs = [
         {
             id: "user-input",
@@ -33,6 +44,11 @@ const CartForm: React.FC = () => {
         },
     ];
 
+    const onCheckout = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        console.log(cart, userInfo);
+    };
+
     return (
         <div className="cart__form-wrapper">
             <div className="cart__form-title">Контактная информация</div>
@@ -40,6 +56,7 @@ const CartForm: React.FC = () => {
                 {inputs.map((input) => {
                     return (
                         <CartFormInput
+                            key={input.id}
                             id={input.id}
                             img={input.img}
                             label={input.label}
@@ -49,10 +66,13 @@ const CartForm: React.FC = () => {
 
                 <div className="form__sum-wrapper">
                     <div className="form__sum-title">Итого</div>
-                    <div className="form__sum">8 499 руб.</div>
+                    <div className="form__sum">{cartSum} руб.</div>
                 </div>
                 <div className="cart__form-actions">
-                    <button className="cart__btn cart__btn--buy">
+                    <button
+                        className="cart__btn cart__btn--buy"
+                        onClick={onCheckout}
+                    >
                         <img src={cartIcon} alt="" />
                         Оформить заказ
                     </button>

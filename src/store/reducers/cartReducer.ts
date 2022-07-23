@@ -32,26 +32,12 @@ export type CartAction =
     | SetCartProductCountAction
     | ResetAllCartAction;
 
-const initialState: ICartProductItem[] = [
-    {
-        id: "1",
-        type: "second",
-        name: "Опора тавровая хомутовая ТХ",
-        price: 500,
-        gost: "ГОСТ 11",
-        count: 5,
-    },
-    {
-        id: "2",
-        type: "two",
-        name: "Опора тавровая хомутовая ДВА",
-        price: 123,
-        gost: "ГОСТ 22",
-        count: 2,
-    },
-];
+const initialState: ICartProductItem[] = [];
 
-export const cartReducer = (state = initialState, action: CartAction) => {
+export const cartReducer = (
+    state = initialState,
+    action: CartAction
+): ICartProductItem[] => {
     switch (action.type) {
         case CartProductActionTypes.ADD_TO_CART:
             const cartProducts = [...state];
@@ -65,15 +51,22 @@ export const cartReducer = (state = initialState, action: CartAction) => {
             return newCartProducts;
 
         case CartProductActionTypes.SET_CART_PRODUCT_COUNT:
+            if (action.payload[1] === 0) {
+                return state.filter((cartProduct) => {
+                    return cartProduct.id !== action.payload[0];
+                });
+            }
             const newState = state.map((cartProduct) => {
-                return cartProduct.id === action.payload[0]
-                    ? (cartProduct.count = action.payload[1])
-                    : cartProduct;
+                if (cartProduct.id === action.payload[0]) {
+                    return { ...cartProduct, count: action.payload[1] };
+                } else {
+                    return cartProduct;
+                }
             });
             return newState;
 
         case CartProductActionTypes.RESET_ALL_CART:
-            return [];
+            return initialState;
         default:
             return state;
     }
