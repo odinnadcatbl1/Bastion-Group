@@ -1,6 +1,4 @@
 import "./CartForm.scss";
-import CartFormInput from "../CartFormInput/CartFormInput";
-
 import userIcon from "../../assets/svg/user.svg";
 import phoneIcon from "../../assets/svg/phone.svg";
 import emailIcon from "../../assets/svg/email.svg";
@@ -9,40 +7,28 @@ import cartIcon from "../../assets/svg/cart-white-2.svg";
 import docIcon from "../../assets/svg/file-text.svg";
 import downloadIcon from "../../assets/svg/download.svg";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import React, { useState } from "react";
+import { useState } from "react";
+import { useInput } from "../../hooks/useInput";
 
 const CartForm: React.FC = () => {
     const cart = useTypedSelector((state) => state.cart);
-    const [userInfo, setUserInfo] = useState({});
+    const [userInfo, setUserInfo] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        case: "",
+    });
+
+    const name = useInput("");
+    const phone = useInput("");
+    const email = useInput("");
+    const organization = useInput("");
 
     let cartSum = 0;
 
     cart.forEach((e) => {
         cartSum = cartSum + e.price * e.count;
     });
-
-    const inputs = [
-        {
-            id: "user-input",
-            img: userIcon,
-            label: "ФИО",
-        },
-        {
-            id: "phone-input",
-            img: phoneIcon,
-            label: "Контактный телефон",
-        },
-        {
-            id: "email-input",
-            img: emailIcon,
-            label: "Email",
-        },
-        {
-            id: "case-input",
-            img: caseIcon,
-            label: "Организация / ИНН",
-        },
-    ];
 
     const onCheckout = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -53,16 +39,69 @@ const CartForm: React.FC = () => {
         <div className="cart__form-wrapper">
             <div className="cart__form-title">Контактная информация</div>
             <form className="cart__form">
-                {inputs.map((input) => {
-                    return (
-                        <CartFormInput
-                            key={input.id}
-                            id={input.id}
-                            img={input.img}
-                            label={input.label}
-                        />
-                    );
-                })}
+                <div className="cart__input-wrapper">
+                    <img src={userIcon} alt="" />
+                    <input
+                        className="cart__form-input"
+                        type="text"
+                        id="user-input"
+                        placeholder=" "
+                        value={name.value}
+                        onChange={(e) => name.onChange(e)}
+                        onBlur={name.onBLur}
+                    />
+                    <label className="cart__form-label" htmlFor="user-input">
+                        ФИО
+                    </label>
+                </div>
+
+                <div className="cart__input-wrapper">
+                    <img src={phoneIcon} alt="" />
+                    <input
+                        className="cart__form-input"
+                        type="text"
+                        id="phone-input"
+                        placeholder=" "
+                        value={phone.value}
+                        onChange={(e) => phone.onChange(e)}
+                        onBlur={phone.onBLur}
+                    />
+                    <label className="cart__form-label" htmlFor="phone-input">
+                        Контактный телефон
+                    </label>
+                </div>
+
+                <div className="cart__input-wrapper">
+                    <img src={emailIcon} alt="" />
+                    <input
+                        className="cart__form-input"
+                        type="email"
+                        id="email-input"
+                        placeholder=" "
+                        value={email.value}
+                        onChange={(e) => email.onChange(e)}
+                        onBlur={email.onBLur}
+                    />
+                    <label className="cart__form-label" htmlFor="email-input">
+                        Email
+                    </label>
+                </div>
+
+                <div className="cart__input-wrapper">
+                    <img src={caseIcon} alt="" />
+                    <input
+                        className="cart__form-input"
+                        type="text"
+                        id="case-input"
+                        placeholder=" "
+                        value={organization.value}
+                        onChange={(e) => organization.onChange(e)}
+                        onBlur={organization.onBLur}
+                    />
+                    <label className="cart__form-label" htmlFor="case-input">
+                        Организация / ИНН
+                    </label>
+                </div>
 
                 <div className="form__sum-wrapper">
                     <div className="form__sum-title">Итого</div>

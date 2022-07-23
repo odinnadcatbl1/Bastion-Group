@@ -101,3 +101,49 @@
         margin-right: 0;
     }
 }
+
+.cart__input-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 1rem 0;
+    position: relative;
+
+    &:first-child {
+        margin-top: 3rem;
+    }
+
+    img {
+        opacity: 1;
+    }
+}
+
+.cart__form-input {
+    border: none;
+    background-color: none;
+    font-family: inherit;
+    width: 100%;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    &:focus ~ .cart__form-label,
+    &:not(:placeholder-shown) ~ .cart__form-label {
+        top: -1rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        left: 0;
+    }
+}
+
+.cart__form-label {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    color: #b3b3b3;
+    font-size: 1.5rem;
+    font-weight: 300;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
