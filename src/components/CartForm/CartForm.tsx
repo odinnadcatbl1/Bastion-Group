@@ -12,12 +12,6 @@ import { useInput } from "../../hooks/useInput";
 
 const CartForm: React.FC = () => {
     const cart = useTypedSelector((state) => state.cart);
-    const [userInfo, setUserInfo] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        organization: "",
-    });
 
     const name = useInput("", { isEmpty: true, minLength: 5, isString: false });
     const phone = useInput("", { isEmpty: true, isPhoneError: false });
@@ -32,13 +26,16 @@ const CartForm: React.FC = () => {
 
     const onCheckout = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        setUserInfo({
-            name: name.value,
-            email: email.value,
-            phone: phone.value,
-            organization: organization.value,
+
+        console.log({
+            products: cart,
+            user: {
+                name: name.value,
+                phone: phone.value,
+                email: email.value,
+                organization: organization.value,
+            },
         });
-        console.log(cart, userInfo);
     };
 
     return (
