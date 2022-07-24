@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/Bastion-Group/build/static/css/main.dcabe936.css",
+    "main.js": "/Bastion-Group/build/static/js/main.09fc5d29.js",
+    "static/media/footer.png": "/Bastion-Group/build/static/media/footer.aa70a51d3ccfd24e42f1.png",
+    "static/media/cart-white.svg": "/Bastion-Group/build/static/media/cart-white.77d1deea1b74e8e3cefb12972ce4b581.svg",
+    "static/media/filter.svg": "/Bastion-Group/build/static/media/filter.3fc81ee09c0abf4f42a963cb388b0d1f.svg",
+    "static/media/help.svg": "/Bastion-Group/build/static/media/help.bdd90a5da4843e64b0b5376d37bf2905.svg",
+    "static/media/cart.svg": "/Bastion-Group/build/static/media/cart.6b46c80104f74497afa70453b5176cf2.svg",
+    "static/media/cart-white-2.svg": "/Bastion-Group/build/static/media/cart-white-2.21a92a804ebfbc934c23cc1c4f1dce86.svg",
+    "static/media/tab-filter--red.svg": "/Bastion-Group/build/static/media/tab-filter--red.7ec0276d1abf7dcf6635bbacfb2fa929.svg",
+    "static/media/location.svg": "/Bastion-Group/build/static/media/location.f6b6bce6e7d9df782e7870e95afe7b7d.svg",
+    "static/media/phone.svg": "/Bastion-Group/build/static/media/phone.70c2e7830e77466a77edde6624a5dd5d.svg",
+    "static/media/list-filter.svg": "/Bastion-Group/build/static/media/list-filter.4fcc8bbae92c2455ffd9557ba426f7ef.svg",
+    "static/media/star.svg": "/Bastion-Group/build/static/media/star.c03fc4bfa91f3c7d2268916745ec1b81.svg",
+    "static/media/star-grey.svg": "/Bastion-Group/build/static/media/star-grey.0ed005af3366e354d29dadb98b790a27.svg",
+    "static/media/sort.svg": "/Bastion-Group/build/static/media/sort.026e8c8a817217e7a7a80e74bdbd5296.svg",
+    "static/media/email.svg": "/Bastion-Group/build/static/media/email.ef1c40177277f413a0c303ac11facec6.svg",
+    "static/media/warning.svg": "/Bastion-Group/build/static/media/warning.15f2d759a5543afcc92e3ff4e43a5210.svg",
+    "static/media/file-text.svg": "/Bastion-Group/build/static/media/file-text.7124ffbde34b031f46ce2e2d30cb5efa.svg",
+    "static/media/tab-filter.svg": "/Bastion-Group/build/static/media/tab-filter.16b05fd4bc06054a3f043a11db248647.svg",
+    "static/media/briefcase.svg": "/Bastion-Group/build/static/media/briefcase.7959d1da5803620b83357f3b1cfeb391.svg",
+    "static/media/mail.svg": "/Bastion-Group/build/static/media/mail.93199a4a489546d05aa6350a3db75dfb.svg",
+    "static/media/search.svg": "/Bastion-Group/build/static/media/search.38f2adff3c5889de6b3743ac36dc4683.svg",
+    "static/media/arrow.svg": "/Bastion-Group/build/static/media/arrow.b6774b1d696544dc2d75b0149cc21ef2.svg",
+    "static/media/user.svg": "/Bastion-Group/build/static/media/user.dcd7cc720f55a4f9f5b63d434ea630ce.svg",
+    "static/media/trash.svg": "/Bastion-Group/build/static/media/trash.465ea3c9d628874a83528f86d53bbd5a.svg",
+    "index.html": "/Bastion-Group/build/index.html",
+    "static/media/download.svg": "/Bastion-Group/build/static/media/download.074c4d982147832323ace924d95526ad.svg",
+    "static/media/arrow-left.svg": "/Bastion-Group/build/static/media/arrow-left.34566c7f61d1940779bb53d0e4d4350a.svg",
+    "main.dcabe936.css.map": "/Bastion-Group/build/static/css/main.dcabe936.css.map",
+    "main.09fc5d29.js.map": "/Bastion-Group/build/static/js/main.09fc5d29.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dcabe936.css",
+    "static/js/main.09fc5d29.js"
+  ]
+}
