@@ -49,7 +49,7 @@ const ProductList: React.FC<FilteredProductsPropTypes> = ({
                 </form>
                 <div className="product__list">
                     <div className="product__list-empty">
-                        К сожалению, таких товаров не найдено :(
+                        К сожалению, товаров не найдено :(
                     </div>
                 </div>
             </div>

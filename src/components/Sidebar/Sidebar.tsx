@@ -25,15 +25,17 @@ const Sidebar: React.FC = () => {
 
     let price: [number, number] = [0, 0];
 
-    let maxPrice = product.reduce((acc, curr) =>
-        acc.price > curr.price ? acc : curr
-    ).price;
+    if (product.length) {
+        let maxPrice = product.reduce((acc, curr) =>
+            acc.price > curr.price ? acc : curr
+        ).price;
 
-    let minPrice = product.reduce((acc, curr) =>
-        acc.price < curr.price ? acc : curr
-    ).price;
+        let minPrice = product.reduce((acc, curr) =>
+            acc.price < curr.price ? acc : curr
+        ).price;
 
-    price = [minPrice, maxPrice];
+        price = [minPrice, maxPrice];
+    }
 
     const onCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const changedType = type.filter((type) => type.id === e.target.id)[0]
