@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/Main/Main";
 import AddTypePage from "../pages/AddTypePage/AddTypePage";
 import AddProductPage from "../pages/AddProductPage/AddProductPage";
@@ -11,7 +11,7 @@ import "./App.scss";
 const App: React.FC = () => {
     return (
         <div className="app">
-            <Router>
+            <HashRouter>
                 <Header />
                 <Routes>
                     <Route path="/" element={<MainPage />} />
@@ -19,7 +19,7 @@ const App: React.FC = () => {
                     <Route path="/add-product" element={<AddProductPage />} />
                     <Route path="/cart-page" element={<CartPage />} />
                 </Routes>
-            </Router>
+            </HashRouter>
             <Footer />
         </div>
     );
