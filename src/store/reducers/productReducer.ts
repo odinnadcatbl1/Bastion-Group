@@ -11,44 +11,7 @@ interface AddNewProductAction {
 
 export type ProductAction = AddNewProductAction;
 
-const initialState: IProductItem[] = [
-    {
-        id: "1",
-        type: "second",
-        name: "Опора тавровая хомутовая ТХ",
-        price: 500,
-        gost: "ГОСТ 11",
-    },
-    {
-        id: "2",
-        type: "two",
-        name: "Опора тавровая хомутовая ДВА",
-        price: 123,
-        gost: "ГОСТ 22",
-    },
-    {
-        id: "3",
-        type: "dsa",
-        name: "Опора тавровая хомутовая ТРИ",
-        price: 17000,
-        gost: "ГОСТ 33",
-    },
-    {
-        id: "4",
-        type: "dsa",
-        name: "Опора тавровая хомутовая ТРИ",
-        price: 4323,
-        gost: "ГОСТ 33",
-    },
-
-    {
-        id: "5",
-        type: "dsa",
-        name: "Опора тавровая хомутовая ТРИ",
-        price: 4323,
-        gost: "ГОСТ 55",
-    },
-];
+const initialState: IProductItem[] = [];
 
 export const productReducer = (state = initialState, action: ProductAction) => {
     switch (action.type) {
